@@ -4,6 +4,7 @@
 
 Cell *head = NULL;
 
+//セル p の直後に新しいセルを挿入する
 void insert_cell(Cell *p, int d) { 
   Cell *new_cell = (Cell*)malloc(sizeof(Cell));
   new_cell->data = d;
@@ -11,6 +12,7 @@ void insert_cell(Cell *p, int d) {
   p->next = new_cell;
 }
 
+//リストの先頭に新しいセルを挿入する
 void insert_cell_top(int d) {
   Cell *new_cell = (Cell*)malloc(sizeof(Cell));
   if (head == NULL){
@@ -24,18 +26,21 @@ void insert_cell_top(int d) {
   }  
 }
 
+//セル p の直後のセルを削除する
 void delete_cell(Cell *p) {
   Cell *q = p->next;
   p->next = p->next->next;
   free(q);
 }
 
+//リストの先頭のセルを削除する
 void delete_cell_top(void) {
   Cell *ahead = head;
   head = head->next;
   free(ahead);
 }
 
+//リストの要素を順に標準出力する
 void display(void) {
   Cell *ahead = head;
   while (ahead != NULL) {
